@@ -1,0 +1,11 @@
+import re
+
+def create_movie_schema(row):
+    columns = row.split('::')
+    id = columns[0]
+    m = re.match('^(.*)\s*\((\d+)\)$', columns[1])    
+    title = m.group(1)
+    year  = m.group(2)
+    genre = columns[2]
+    return Row(movie_id=id, title=title, year=year, genre=genre)
+
